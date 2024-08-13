@@ -45,7 +45,6 @@ jobs:
         ./gradlew buildJars
 
     - name: Clone and build jpf-core
-      continue-on-error: true
       if: runner.os == 'Windows'
       run: | 
         git clone https://github.com/javapathfinder/jpf-core.git /tmp/jpf-core
@@ -80,6 +79,7 @@ jobs:
         done
 
     - name: Run JPF on JAR files
+      continue-on-error: true
       if: runner.os == 'Windows'
       shell: cmd 
       run: | 
